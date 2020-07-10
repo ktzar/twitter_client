@@ -32,6 +32,6 @@ Go to http://localhost:8090/
 - Shows error when failure
 
 # Decisions
-- I've used Slim PHP Framework since it's a good one to keep things simple, but organised, and make it easier to focus on the code I've actually written.
+- I've used [Slim PHP Framework](http://www.slimframework.com/) since it's a good one to keep things simple, but organised, and make it easier to focus on the code I've actually written.
 - The API KEY and SECRET are dynamically loaded from `.env` . As I've pushed this to a public repo I've removed the keys I was using during development.
 
