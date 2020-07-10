@@ -1,12 +1,9 @@
 <?php
-declare(strict_types=1);
-
-use App\Application\Actions\User\ListUsersAction;
-use App\Application\Actions\User\ViewUserAction;
+use App\Domain\Tweet\TweetFetcher;
+use App\Views\Renderer;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\App;
-use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 
 return function (App $app) {
     $app->options('/{routes:.*}', function (Request $request, Response $response) {
@@ -15,12 +12,27 @@ return function (App $app) {
     });
 
     $app->get('/', function (Request $request, Response $response) {
-        $response->getBody()->write('Hello world!');
+        $data = array('title' => 'Twitter feed');
+        $response->getBody()->write(Renderer::render('homepage', $data));
         return $response;
     });
 
-    $app->group('/users', function (Group $group) {
-        $group->get('', ListUsersAction::class);
-        $group->get('/{id}', ViewUserAction::class);
+    $app->get('/tweets/{handle}', function (Request $request, Response $response, array $args) {
+        try {
+            $feed = new TweetFetcher();
+            $info = $feed->findUserTweets($args['handle']);
+            $response->getBody()->write(
+                json_encode([
+                    "success" => true,
+                    "user" => $info["user"],
+                    "tweets" => $info['tweets']
+                ])
+            );
+        } catch(Exception $e) {
+            $response->getBody()->write(
+                json_encode(['success' => false, 'error' => $e->getMessage()])
+            );
+        }
+        return $response;
     });
 };

@@ -1,7 +1,9 @@
 .idea/
 .vscode/
+/public/js/bundle.js
 /coverage/
 /vendor/
+/node_modules/
 /logs/*
 !/logs/README.md
 .phpunit.result.cache

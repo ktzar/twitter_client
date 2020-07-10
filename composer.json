@@ -1,33 +1,25 @@
 {
-    "name": "slim/slim-skeleton",
-    "description": "A Slim Framework skeleton application for rapid development",
+    "name": "ktzar/twitter_client",
+    "description": "Show some tweets",
     "keywords": [
-        "microframework",
-        "rest",
-        "router",
-        "psr7"
     ],
-    "homepage": "http://github.com/slimphp/Slim-Skeleton",
+    "homepage": "http://github.com/ktzar/twitter_client",
     "license": "MIT",
     "authors": [
         {
-            "name": "Josh Lockhart",
-            "email": "info@joshlockhart.com",
-            "homepage": "http://www.joshlockhart.com/"
-        },
-        {
-            "name": "Pierre Berube",
-            "email": "pierre@lgse.com",
-            "homepage": "http://www.lgse.com/"
+            "name": "Miguel Gonzalez",
+            "email": "miguelmail@gmail.com"
         }
     ],
     "require": {
+        "php": "^7.2",
         "ext-json": "*",
         "monolog/monolog": "^2.0",
-        "php": "^7.2",
+        "mustache/mustache": "^2.13",
         "php-di/php-di": "^6.1",
         "slim/psr7": "^1.1",
-        "slim/slim": "^4.5"
+        "slim/slim": "^4.5",
+        "vlucas/phpdotenv": "^5.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.5"

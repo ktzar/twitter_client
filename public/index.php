@@ -17,6 +17,9 @@ if (false) { // Should be set to true in production
 	$containerBuilder->enableCompilation(__DIR__ . '/../var/cache');
 }
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
 // Set up settings
 $settings = require __DIR__ . '/../app/settings.php';
 $settings($containerBuilder);
@@ -25,10 +28,6 @@ $settings($containerBuilder);
 $dependencies = require __DIR__ . '/../app/dependencies.php';
 $dependencies($containerBuilder);
 
-// Set up repositories
-$repositories = require __DIR__ . '/../app/repositories.php';
-$repositories($containerBuilder);
-
 // Build PHP-DI Container instance
 $container = $containerBuilder->build();
 
@@ -36,10 +35,6 @@ $container = $containerBuilder->build();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 $callableResolver = $app->getCallableResolver();
-
-// Register middleware
-$middleware = require __DIR__ . '/../app/middleware.php';
-$middleware($app);
 
 // Register routes
 $routes = require __DIR__ . '/../app/routes.php';

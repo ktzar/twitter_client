@@ -1,42 +1,37 @@
-# Slim Framework 4 Skeleton Application
+# Twitter feed
 
-[![Coverage Status](https://coveralls.io/repos/github/slimphp/Slim-Skeleton/badge.svg?branch=master)](https://coveralls.io/github/slimphp/Slim-Skeleton?branch=master)
+Hello! In order to get the application to work you need to run the following.
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 4 application. This application uses the latest Slim 4 with Slim PSR-7 implementation and PHP-DI container implementation. It also uses the Monolog logger.
+Add Api key and Secret Key to `.env`.
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+If you have composer and node installed:
 
-## Install the Application
-
-Run this command from the directory in which you want to install your new Slim Framework application.
-
-```bash
-composer create-project slim/slim-skeleton [my-app-name]
+```sh
+composer install
+npm i
+npm run build
+docker-compose up
 ```
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
+If you only have Docker:
 
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writable.
-
-To run the application in development, you can run these commands 
-
-```bash
-cd [my-app-name]
-composer start
+```sh
+docker run --rm -v $(pwd):/app composer install
+docker run --rm -v $(pwd):/usr/src/app -w /usr/src/app node:slim npm install
+docker run --rm -v $(pwd):/usr/src/app -w /usr/src/app node:slim npm run build
+docker-compose up
 ```
 
-Or you can use `docker-compose` to run the app with `docker`, so you can run these commands:
-```bash
-cd [my-app-name]
-docker-compose up -d
-```
-After that, open `http://localhost:8080` in your browser.
+Go to http://localhost:8090/
 
-Run this command in the application directory to run the test suite
+# Features
+- Renders images
+- Replaces twitter handles with links to easily load a user's timeline
+- Counts followers
+- Loads profile pic
+- Shows error when failure
 
-```bash
-composer test
-```
+# Decisions
+- I've used Slim PHP Framework since it's a good one to keep things simple, but organised, and make it easier to focus on the code I've actually written.
+- The API KEY and SECRET are dynamically loaded from `.env` . As I've pushed this to a public repo I've removed the keys I was using during development.
 
-That's it! Now go build something cool.

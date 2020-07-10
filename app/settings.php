@@ -6,8 +6,13 @@ use Monolog\Logger;
 
 return function (ContainerBuilder $containerBuilder) {
     // Global Settings Object
+    //
     $containerBuilder->addDefinitions([
         'settings' => [
+            'twitter' => [
+                'key' => $_ENV['TWITTER_API_KEY'],
+                'secret' => $_ENV['TWITTER_API_SECRET_KEY'],
+            ],
             'displayErrorDetails' => true, // Should be set to false in production
             'logger' => [
                 'name' => 'slim-app',
