@@ -17,6 +17,7 @@ const Wrapper = styled.div`
     border: 1px solid #666;
     box-shadow: 0 5px 10px rgba(0,0,0,0.5);
     color: #333;
+    max-width: 350px;
 `;
 
 const Title = styled.h2`
@@ -56,7 +57,7 @@ class TweetList extends React.Component {
             .then(d => {
                 this.setState({userInfo: d.user, tweets: d.tweets, error: false, loading: false});
             })
-            .catch(err => this.setState({error: true}));
+            .catch(err => this.setState({error: true, loading: false}));
     }
 
     componentDidMount() {
