@@ -14,7 +14,7 @@ const Error = styled.div`
 `;
 
 const Wrapper = styled.div`
-    border: 1px solid #666;
+    border: 1px solid #bbb;
     box-shadow: 0 5px 10px rgba(0,0,0,0.5);
     color: #333;
     max-width: 350px;
