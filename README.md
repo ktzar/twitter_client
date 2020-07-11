@@ -2,7 +2,7 @@
 
 Hello! In order to get the application to work you need to run the following.
 
-Add Api key and Secret Key to `.env`.
+**Add Api key and Secret Key to `.env`**.
 
 If you have composer and node installed:
 
