@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled, { createGlobalStyle} from 'styled-components';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 import Tweet from './Tweet';
 import User from './User';
@@ -22,6 +23,7 @@ const Wrapper = styled.div`
 
 const Title = styled.h2`
     text-align: center;
+    font-family: 'Merienda One', cursive;
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -77,7 +79,9 @@ class TweetList extends React.Component {
                     ? <Spinner />
                     : <React.Fragment>
                         <User {...userInfo} />
+                        <CSSTransitionGroup transitionName="tweet">
                         {tweets && tweets.map(t => <Tweet onUserClick={this.onSetUsername} {...t} key={t.id} />)}
+                        </CSSTransitionGroup>
                       </React.Fragment>
                 }
             </Wrapper>

@@ -21,6 +21,12 @@ const Button = styled.button`
     color: white;
     padding: 4px 6px;
     border-radius: 8px;
+    cursor: pointer;
+    transition: background .5s;
+
+    &:active, &:hover, &:focus {
+        background: #9bd;
+    }
 `;
 
 const UserForm = ({onUserChange}) => {

@@ -6,6 +6,11 @@ const UserButton = styled.button`
     background: #eeeeef;
     border: none;
     cursor: pointer;
+    transition: background .5s ease-out;
+
+    &:active, &:hover, &:focus {
+        background: #ccc;
+    }
 `;
 
 const Link = styled.a`
